@@ -84,4 +84,15 @@ def create_hparams(hparams_string=None, verbose=False):
         "mask_padding": True  # set model's padded outputs to padded values
     }
 
+    if hparams_string is not None:
+        import re, ast
+        pattern = r'([a-zA-Z0-9._]+)=([a-zA-Z0-9._]+)'
+        matches = re.findall(pattern, hparams_string)
+        for match in matches:
+            key, value = match
+            try:
+                hparams[key] = ast.literal_eval(value)
+            except ValueError:
+                hparams[key] = value
+
     return hparams
