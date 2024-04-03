@@ -20,3 +20,13 @@ out/
 wavs/
 DUMMY/
 LJSpeech*
+
+# Model checkpoints
+*.pt
+*.ckpt
+ckpt/
+checkpoints/
+
+# Generated samples
+samples/
+generated_*
